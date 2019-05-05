@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pre-release</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#pre-release-pseudocode">Pre-release pseudocode</a>
+<ul>
+<li><a href="#task-one">Task One</a></li>
+<li><a href="#task-two">Task Two</a></li>
+<li><a href="#task-three">Task Three</a></li>
+<li><a href="#a-check-for-uniqueness">A check for uniqueness</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <h1 id="pre-release-pseudocode">Pre-release pseudocode</h1>
+<h2 id="task-one">Task One</h2>
+<h3 id="task-description">Task Description</h3>
+<p>For every item in the auction, the item number, description and the reserve price should be recorded. The number of bids is set to zero. There must be at least 10 items in the auction.</p>
+<h3 id="code">Code</h3>
+<pre class=" language-basic"><code class="prism  language-basic">MinItems <span class="token operator">=</span> <span class="token number">10</span>
+
+<span class="token function">REPEAT</span>
+	<span class="token function">OUTPUT</span> <span class="token string">"Enter the number of items:"</span> 
+	<span class="token keyword">INPUT</span> N
+	<span class="token keyword">IF</span> <span class="token punctuation">(</span>N <span class="token operator">&lt;</span> MinItems<span class="token punctuation">)</span> <span class="token keyword">THEN</span>
+    <span class="token function">OUTPUT</span> <span class="token string">"There must be at least"</span><span class="token punctuation">,</span> MinItems<span class="token punctuation">,</span> <span class="token string">"items."</span>
+	<span class="token keyword">END</span> <span class="token keyword">IF</span>
+<span class="token keyword">UNTIL</span> <span class="token punctuation">(</span>N <span class="token operator">&gt;=</span> MinItems<span class="token punctuation">)</span>
+
+ItemNumber[<span class="token number">1</span><span class="token punctuation">:</span>N]
+Description[<span class="token number">1</span><span class="token punctuation">:</span>N]
+ReservePrice[<span class="token number">1</span><span class="token punctuation">:</span>N]
+NumberBids[<span class="token number">1</span><span class="token punctuation">:</span>N]
+
+<span class="token keyword">FOR</span> I <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">TO</span> N
+  <span class="token function">OUTPUT</span> <span class="token string">"Enter the item number for item"</span><span class="token punctuation">,</span> I<span class="token punctuation">,</span> <span class="token string">": "</span>
+  <span class="token keyword">INPUT</span> ItemNumber[I]
+	<span class="token function">OUTPUT</span> <span class="token string">"Enter the description for item"</span><span class="token punctuation">,</span> I<span class="token punctuation">,</span> <span class="token string">": "</span>
+	<span class="token keyword">INPUT</span> Description[I]
+	<span class="token function">OUTPUT</span> <span class="token string">"Enter the reserve price for item"</span><span class="token punctuation">,</span> I<span class="token punctuation">,</span> <span class="token string">": "</span>
+	<span class="token keyword">INPUT</span> ReservePrice[I]
+	NumberBids[I] <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">NEXT</span> I
+</code></pre>
+<h3 id="data-structures">Data Structures</h3>
+<ul>
+<li><code>MinItems</code>
+<ul>
+<li>Data structure: Constant</li>
+<li>Data type: Integer</li>
+<li>Use: Minimum number of items that have to be present for auction</li>
+</ul>
+</li>
+<li><code>N</code>
+<ul>
+<li>Data structure: Variable</li>
+<li>Data type: Integer</li>
+<li>Use: Number of items that are available for the auction</li>
+</ul>
+</li>
+<li><code>ItemNumber</code>
+<ul>
+<li>Data structure: Array</li>
+<li>Data type: Integer</li>
+<li>Use:  To store the item numbers of the items in the auction</li>
+</ul>
+</li>
+<li><code>Description</code>
+<ul>
+<li>Data structure: Array</li>
+<li>Data type: String</li>
+<li>Use: To store the description of the items in the auction</li>
+</ul>
+</li>
+<li><code>ReservePrice</code>
+<ul>
+<li>Data structure: Array</li>
+<li>Data type: Currency</li>
+<li>Use: To store the reserve price of the items in the auction</li>
+</ul>
+</li>
+<li><code>NumberBids</code>
+<ul>
+<li>Data structure: Array</li>
+<li>Data type: Integer</li>
+<li>Use: To store the number of bids for each product in the auction</li>
+</ul>
+</li>
+</ul>
+<h2 id="task-two">Task Two</h2>
+<h3 id="task-description-1">Task Description</h3>
+<p>A buyer should be able to find an item and view the item number, description and the current highest bid. A buyer can then enter their buyer number and bid, which must be higher than any previously recorded bids. Every time a new bid is recorded the number of bids for that item is increased by one. Buyers can bid for an item many times and they can bid for many items.</p>
+<h3 id="code-1">Code</h3>
+<pre class=" language-basic"><code class="prism  language-basic">HighestBid[<span class="token number">1</span><span class="token punctuation">:</span>N]
+
+<span class="token keyword">FOR</span> I <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">TO</span> N
+	HighestBid[I] <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">NEXT</span> I
+
+Choice <span class="token operator">=</span> <span class="token string">"Yes"</span> 
+
+<span class="token keyword">WHILE</span> <span class="token punctuation">(</span>Choice <span class="token operator">=</span> <span class="token string">"Yes"</span><span class="token punctuation">)</span>
+	<span class="token function">OUTPUT</span> <span class="token string">"Enter the item number you would like to view: "</span>
+	<span class="token keyword">INPUT</span> BidItemNum
+	<span class="token keyword">FOR</span> I <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">TO</span> N
+		<span class="token keyword">IF</span> <span class="token punctuation">(</span>ItemNumber[I] <span class="token operator">=</span> BidItemNum<span class="token punctuation">)</span> <span class="token keyword">THEN</span>
+			<span class="token function">OUTPUT</span> <span class="token string">"Item Number:"</span><span class="token punctuation">,</span> ItemNumber[I]
+			<span class="token function">OUTPUT</span> <span class="token string">"Item Description:"</span><span class="token punctuation">,</span> Description[I]
+			<span class="token function">OUTPUT</span> <span class="token string">"Highest Bid:"</span><span class="token punctuation">,</span> HighestBid[I]
+
+			<span class="token function">OUTPUT</span> <span class="token string">"Do you want to bid for this item? (Yes/No): "</span>
+			<span class="token keyword">INPUT</span> Choice
+
+			<span class="token keyword">IF</span> <span class="token punctuation">(</span>Choice <span class="token operator">=</span> <span class="token string">"Yes"</span><span class="token punctuation">)</span> <span class="token keyword">THEN</span>
+				<span class="token function">OUTPUT</span> <span class="token string">"Please enter your buyer number: "</span>
+				<span class="token keyword">INPUT</span> BuyerNumber
+
+				<span class="token function">REPEAT</span>
+					<span class="token function">OUTPUT</span> <span class="token string">"Enter the new bid: "</span>
+					<span class="token keyword">INPUT</span> BidAmount
+					<span class="token keyword">IF</span> <span class="token punctuation">(</span>BidAmount <span class="token operator">&lt;=</span> HighestBid[I]<span class="token punctuation">)</span> <span class="token keyword">THEN</span>
+						<span class="token function">OUTPUT</span> <span class="token string">"Please bid higher than the current highest bid."</span>
+					<span class="token keyword">END</span> <span class="token keyword">IF</span>
+				<span class="token keyword">UNTIL</span> <span class="token punctuation">(</span>BidAmount <span class="token operator">&gt;</span> HighestBid[I]<span class="token punctuation">)</span>
+
+				HighestBid[I] <span class="token operator">=</span> BidAmount
+				NumberBids[I] <span class="token operator">=</span> NumberBids[I] <span class="token operator">+</span> <span class="token number">1</span>
+			<span class="token keyword">END</span> <span class="token keyword">IF</span>
+
+			I <span class="token operator">=</span> N <span class="token operator">+</span> <span class="token number">2</span>
+		<span class="token keyword">END</span> <span class="token keyword">IF</span>
+	<span class="token keyword">NEXT</span> I
+
+	<span class="token keyword">IF</span> <span class="token punctuation">(</span><span class="token operator">NOT</span> I <span class="token operator">=</span> N <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token keyword">THEN</span>
+		<span class="token function">OUTPUT</span> <span class="token string">"Sorry, the item number you entered doesn't exist."</span>
+	ENDIF
+
+	<span class="token function">OUTPUT</span> <span class="token string">"Do you want to view/bid again for any item? (Yes/No): "</span>
+	<span class="token keyword">INPUT</span> Choice
+<span class="token keyword">END</span>
+</code></pre>
+<h2 id="task-three">Task Three</h2>
+<h3 id="task-description-2">Task Description</h3>
+<p>Using the results from task two, identify items that have reached their reserve price, mark them as sold, calculate 10% of the final bid as the auction company fee and add this to the total fee for all sold items. Display this total fee. Display the item number and final bid for all the items with bids that have not reached their reserve price. Display the item number of any items that have received no bids. Display the number of items sold, the number of items that did not meet the reserve price and the number of items with no bids.</p>
+<h3 id="code-2">Code</h3>
+<pre class=" language-basic"><code class="prism  language-basic">Sold[<span class="token number">1</span><span class="token punctuation">:</span>N]
+TotalFee[<span class="token number">1</span><span class="token punctuation">:</span>N]
+CountSold <span class="token operator">=</span> <span class="token number">0</span>
+AuctionRevenue <span class="token operator">=</span> <span class="token number">0</span>
+BidsButUnsold <span class="token operator">=</span> <span class="token number">0</span>
+CountNoBids <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token function">OUTPUT</span> <span class="token string">"These are the items which were sold:"</span>
+<span class="token keyword">FOR</span> I <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">TO</span> N
+	<span class="token keyword">IF</span> <span class="token punctuation">(</span>HighestBid[I] <span class="token operator">&gt;=</span> ReservePrice[I]<span class="token punctuation">)</span> <span class="token keyword">THEN</span>
+		Sold[I] <span class="token operator">=</span> True
+		CountSold <span class="token operator">=</span> CountSold <span class="token operator">+</span> <span class="token number">1</span>
+		TotalFee[I] <span class="token operator">=</span> <span class="token number">1.1</span><span class="token operator">*</span>HighestBid[I]
+		AuctionRevenue <span class="token operator">=</span> AuctionRevenue <span class="token operator">+</span> <span class="token number">0.1</span><span class="token operator">*</span>HighestBid[I]
+		<span class="token function">OUTPUT</span> <span class="token string">"Item Number:"</span><span class="token punctuation">,</span> ItemNumber[I]
+		<span class="token function">OUTPUT</span> <span class="token string">"Description:"</span><span class="token punctuation">,</span> Description[I]
+		<span class="token function">OUTPUT</span> <span class="token string">"Total Fee:"</span><span class="token punctuation">,</span> TotalFee[I]
+	<span class="token keyword">ELSE</span>
+		Sold[I] <span class="token operator">=</span> False
+	<span class="token keyword">END</span> <span class="token keyword">IF</span>
+<span class="token keyword">NEXT</span> I
+
+<span class="token function">OUTPUT</span> <span class="token string">"These are the items which were not bid for: "</span>
+<span class="token keyword">FOR</span> I <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">TO</span> N
+	<span class="token keyword">IF</span> <span class="token punctuation">(</span>NumberBids[I] <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">THEN</span>
+		CountNoBids <span class="token operator">=</span> CountNoBids <span class="token operator">+</span> <span class="token number">1</span>
+		<span class="token function">OUTPUT</span> <span class="token string">"Item Number:"</span><span class="token punctuation">,</span> ItemNumber[I]
+	<span class="token keyword">END</span> <span class="token keyword">IF</span>
+<span class="token keyword">NEXT</span> I
+
+<span class="token function">OUTPUT</span> <span class="token string">"These are the items with bids which didn't reach their reserve price: "</span>
+<span class="token keyword">FOR</span> I <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">TO</span> N
+	<span class="token keyword">IF</span> <span class="token punctuation">(</span>NumberBids[I] <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">AND</span> <span class="token punctuation">(</span><span class="token operator">NOT</span> Sold[I]<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">THEN</span>
+		BidsButUnsold <span class="token operator">=</span> BidsButUnsold <span class="token operator">+</span> <span class="token number">1</span>
+		<span class="token function">OUTPUT</span> <span class="token string">"Item Number:"</span><span class="token punctuation">,</span> ItemNumber[I]
+		<span class="token function">OUTPUT</span> <span class="token string">"Highest Bid:"</span><span class="token punctuation">,</span> HighestBid[I]
+	<span class="token keyword">END</span> <span class="token keyword">IF</span>
+<span class="token keyword">NEXT</span> I
+
+<span class="token function">OUTPUT</span> <span class="token string">"Number of items sold:"</span><span class="token punctuation">,</span> CountSold
+<span class="token function">OUTPUT</span> <span class="token string">"Number of items with bids that were unsold:"</span><span class="token punctuation">,</span> BidsButUnsold
+<span class="token function">OUTPUT</span> <span class="token string">"Number of items with no bids:"</span><span class="token punctuation">,</span> CountNoBids
+<span class="token function">OUTPUT</span> <span class="token string">"Revenue of the auction company:"</span><span class="token punctuation">,</span> AuctionRevenue
+</code></pre>
+<h2 id="a-check-for-uniqueness">A check for uniqueness</h2>
+<p>Use this code sample to check if all of the elements in a certain array are unique. Assume that the array’s name is <code>Array</code>. Replace this with the name of whatever you want to check, like <code>ItemNumbers</code> or <code>BuyerNums</code>, etc… I’m also assuming that there are <code>N</code> items in <code>Array</code>.</p>
+<pre class=" language-basic"><code class="prism  language-basic"><span class="token function">Array</span>[<span class="token number">1</span><span class="token punctuation">:</span>N]
+
+Unique <span class="token operator">=</span> True
+<span class="token keyword">FOR</span> I <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">TO</span> N
+	<span class="token function">PRINT</span> <span class="token string">"Input the value of array element"</span><span class="token punctuation">,</span> I
+	<span class="token keyword">INPUT</span> <span class="token function">Array</span>[I]
+	<span class="token keyword">FOR</span> J <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">TO</span> <span class="token punctuation">(</span>I <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+		<span class="token keyword">IF</span> <span class="token punctuation">(</span><span class="token function">Array</span>[I] <span class="token operator">=</span> <span class="token function">Array</span>[J]<span class="token punctuation">)</span> <span class="token keyword">THEN</span>
+			Unique <span class="token operator">=</span> False
+			J <span class="token operator">=</span> I <span class="token operator">+</span> <span class="token number">1</span>
+		<span class="token keyword">END</span> <span class="token keyword">IF</span>
+	<span class="token keyword">NEXT</span>
+<span class="token keyword">NEXT</span>
+
+<span class="token keyword">IF</span> Unique <span class="token keyword">THEN</span>
+	<span class="token function">PRINT</span> <span class="token string">"All of the elements in the array were unique"</span>
+<span class="token keyword">ELSE</span>
+	<span class="token function">PRINT</span> <span class="token string">"There are elements in the array which are repeated"</span>
+<span class="token keyword">END</span> <span class="token keyword">IF</span> 
+</code></pre>
+
+    </div>
+  </div>
+</body>
+
+</html>
