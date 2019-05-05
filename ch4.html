@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ch4</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#operating-systems">Operating systems</a>
+<ul>
+<li><a href="#interrupts-and-buffers">Interrupts and buffers</a></li>
+</ul>
+</li>
+<li><a href="#computer-architecture">Computer architecture</a>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <h1 id="operating-systems">Operating systems</h1>
+<ul>
+<li><strong>Operating system (OS)</strong> is software running in the background of a computer system, which manages many of the basic functions of a computer. These are:
+<ol>
+<li>Multitasking</li>
+<li>Multiprogramming</li>
+<li>Batch processing</li>
+<li>Error handling</li>
+<li>Loading and running of applications/software</li>
+<li>Management of user accounts</li>
+<li>File utilities</li>
+<li>Processor management</li>
+<li>Real-time processing</li>
+<li>Interrupt handling</li>
+<li>Security</li>
+<li>Input and output control</li>
+<li>Human computer interface</li>
+</ol>
+</li>
+</ul>
+<h2 id="interrupts-and-buffers">Interrupts and buffers</h2>
+<h3 id="interrupts">Interrupts</h3>
+<ul>
+<li>An <strong>interrupt</strong> is a signal sent from a device or from software to the processor. This will cause the processor to temporarily stop what it is doing and service the interrupt.</li>
+<li>Software interrupts:
+<ul>
+<li>Program file cannot be found to initiate execution</li>
+<li>Prompt to alert a user who is closing a document without saving</li>
+</ul>
+</li>
+<li>Hardware interrupts:
+<ul>
+<li>A paper jam has occurred in the printer</li>
+<li>A disk drive is ready to receive more data</li>
+<li>The user holds CTRL+ALT+BREAK</li>
+</ul>
+</li>
+</ul>
+<h3 id="buffers">Buffers</h3>
+<ul>
+<li><strong>Buffers</strong> are temporary memory areas in a computer to help optimise the use of the processor, since hardware devices operate at slower speeds than the computer processor.</li>
+<li>How it works:
+<ul>
+<li>When devices request data from a computer, they receive it in a buffer.</li>
+<li>While they empty the data into themselves at a pathetically slow speed, the computer’s processor handles other tasks.</li>
+<li>When it has finished emptying the buffer, and if more information needs to be sent, the computer’s processor fills the buffer with data again.</li>
+<li>This happens until all data is sent.</li>
+<li>This way, the computer is not limited by the speed of the devices it communicates with.</li>
+</ul>
+</li>
+</ul>
+<h1 id="computer-architecture">Computer architecture</h1>
+<h3 id="von-neumann-architecture">Von Neumann Architecture</h3>
+<ul>
+<li>The idea to hold programs and data in memory.</li>
+<li>Data would then move between the memory unit and the processor.</li>
+<li>The processor and memory unit are linked using buses.
+<ul>
+<li>
+<ol>
+<li>Address bus.</li>
+</ol>
+<ul>
+<li>Carries signals related to addresses.</li>
+<li>Uni-directional.</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>Data bus.
+<ul>
+<li>Carries data.</li>
+<li>Bi-directional.</li>
+</ul>
+</li>
+<li>Control bus.
+<ul>
+<li>Carries signals relating to control &amp; coordination of all computer activities.</li>
+<li>Both uni and bi-directional, depending on internal connections within the computer.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Addresses indicate where the data is stored and registers are needed so that data can be manipulated within the computer.</li>
+<li>An address is the location of where data can be found in a computer memory.</li>
+</ul>
+<h3 id="processor">Processor</h3>
+<ul>
+<li>The processor contains the arithmetic and logic unit (ALU). The ALU allows arithmetic and logic operations to be carried out.</li>
+</ul>
+<h3 id="control-unit">Control Unit</h3>
+<ul>
+<li>The control unit controls the operation of the memory, processor and input/output devices.</li>
+</ul>
+<h3 id="the-fetch-execute-cycle">The fetch-execute cycle</h3>
+<ol>
+<li>The PC contains the address of the memory location of the next instruction to be fetched.</li>
+<li>This address is copied from the PC to the MAR through the address bus.</li>
+<li>The instruction at the memory location contained in MAR is copied into the MDR temporarily.</li>
+<li>The instruction in the MDR is placed in the CIR.</li>
+<li>The value in the PC is incremented by one, pointing the next instruction to be fetched.</li>
+<li>The instruction is finally decoded and then executed.</li>
+</ol>
+
+    </div>
+  </div>
+</body>
+
+</html>
