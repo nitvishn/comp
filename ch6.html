@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ch6</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#memory-and-data-storage">Memory and data storage</a>
+<ul>
+<li><a href="#file-formats">File formats</a></li>
+<li><a href="#compression">Compression</a></li>
+<li><a href="#memory-and-storage">Memory and storage</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <h1 id="memory-and-data-storage">Memory and data storage</h1>
+<h2 id="file-formats">File formats</h2>
+<h3 id="musical-instrument-digital-interface-midi">Musical Instrument Digital Interface (MIDI)</h3>
+<ul>
+<li>A communications protocol that allows electronic musical instruments to interact with each other and the computer.</li>
+<li>It uses 8 bit serial transmission with one start and stop bit, and is asynchronous, with one start and stop bit.</li>
+<li>Examples of MIDI parameters
+<ul>
+<li>Note on/off</li>
+<li>Key pressure</li>
+</ul>
+</li>
+<li>Playback through different instruments requires a <strong>sequencer software</strong>.</li>
+<li>Don’t contain audio tracks, and so have smaller size.</li>
+</ul>
+<h3 id="mpeg-3-mp3">MPEG-3 (MP3)</h3>
+<ul>
+<li>Uses audio compression to convert music and other sounds into MP3 file format.</li>
+<li>CD files can be converted to MP3 using file compression software.</li>
+<li><strong>Perceptual music shaping</strong> removes sounds that the human ear cannot hear properly, allowing the file to be compressed to 10% its original size.</li>
+<li>MP3 employs lossy compression.</li>
+<li>Quality of MP3 files depend on the bit rate - that is the number of bits used per second to store audio.</li>
+</ul>
+<h3 id="mpeg-4-mp4">MPEG-4 (MP4)</h3>
+<ul>
+<li>MP4 files allow the storage of multimedia like music, videos, photos and animation.</li>
+</ul>
+<h3 id="joint-photographic-experts-group-jpeg">Joint Photographic Experts Group (JPEG)</h3>
+<ul>
+<li>JPEG is a file format that uses lossy compression.</li>
+<li>It compresses raw bitmap files into lower file sizes.</li>
+</ul>
+<h3 id="text-and-number-file-formats">Text and number file formats</h3>
+<ul>
+<li>Text is usually stored in ASCII format.</li>
+<li>Numbers can be stored in the formats real, integer, data, time, currency, etc.</li>
+<li>This uses lossless compression. One way is substituting repeating sections of words with something else.</li>
+</ul>
+<h2 id="compression">Compression</h2>
+<h3 id="lossless-file-compression">Lossless file compression</h3>
+<ul>
+<li>All the data bits from the original file are reconstructed when the file is again uncompressed.</li>
+<li>In a text file:
+<ul>
+<li>Uses compression algorithm</li>
+<li>Repeating words / phrases / patterns are identified􏰀 and are replaced with a smaller placeholder value</li>
+<li>File / dictionary / index of phrases created</li>
+<li>Index will store word/phrase with value</li>
+</ul>
+</li>
+</ul>
+<h3 id="lossy-file-compression">Lossy file compression</h3>
+<ul>
+<li>The file compression algorithm eliminates some unnecessary bits of data.</li>
+<li>It is impossible to get the original file back once it is compressed.</li>
+</ul>
+<h2 id="memory-and-storage">Memory and storage</h2>
+<h3 id="primary-memory">Primary memory</h3>
+<h4 id="random-access-memory-ram">Random Access Memory (RAM)</h4>
+<ul>
+<li>Volatile/temporary. The contents of the RAM are lost when the power is turned off.</li>
+<li>It is used to store data, files, or the part of the operating system that is currently in use.</li>
+<li>It can be written to or read from and the contents can be changed.</li>
+</ul>
+<h5 id="dynamic-ram">Dynamic RAM</h5>
+<ul>
+<li>Each chip consists of millions of transistors and capacitors.
+<ul>
+<li>Capacitor holds the bits of information (0 or 1)</li>
+<li>Transistor acts as a switch, and allows the chip control circuitry to read the capacitor or change the capacitor’s value.</li>
+</ul>
+</li>
+<li>The capacitor needs to be recharged every 15 microseconds to not lose its value.</li>
+</ul>
+<h5 id="static-ram">Static RAM</h5>
+<ul>
+<li>It uses ‘flip flops’ which hold each bit of memory.</li>
+<li>This does not need to be constantly refreshed.</li>
+</ul>
+<h5 id="dram-vs-sram">DRAM vs SRAM</h5>
+<ul>
+<li>DRAM is less expensive to manufacture</li>
+<li>DRAM consumes less power</li>
+<li>DRAM has a higher storage density</li>
+<li>SRAM is faster (25 nanoseconds access time as opposed to 60 ns)</li>
+</ul>
+<h4 id="read-only-memory-rom">Read Only Memory (ROM)</h4>
+<ul>
+<li>Non-volatile permanent memories.</li>
+<li>Stores the start-up instructions when a computer is switched on. (ROM might store the basic input/output system, BIOS)</li>
+<li>The data or contents of a typical ROM chip can only be read, they cannot be changed.</li>
+</ul>
+<h3 id="secondary-storage">Secondary storage</h3>
+<h4 id="hard-disk-drives-hdd">Hard Disk Drives (HDD)</h4>
+<ul>
+<li>Data is stored in a digital format on the magnetic surfaces in tracks and sectors of the disks in a HDD.</li>
+<li>The HDD has a number of platters which spin at around 7000 times a second.</li>
+<li>Slow data access when compared to RAM, so latency is significant.</li>
+</ul>
+<h4 id="solid-state-drives-ssd">Solid State Drives (SSD)</h4>
+<ul>
+<li>No moving parts.</li>
+<li>Data is stored by controlling the movement of electrons within NAND chips, inside millions of tiny transistors within the chip.</li>
+<li>SSDs with NAND chips are called flash storage.</li>
+<li>Some SSDs use <strong>Electronically Erasable Programmable Read-Only Memory (EEPROM)</strong>, which uses NOR chips instead of NAND. This makes them faster and more expensive.</li>
+<li>EEPROM allows data to be erased in bytes at a time, while flash storage only allow blocks of data to be erased.</li>
+</ul>
+<h3 id="off-line-storage">Off-line storage</h3>
+<h4 id="cddvd">CD/DVD</h4>
+<ul>
+<li>These are optical storage devices.</li>
+<li>Laser light is used to read and write data in the surface of the disk.</li>
+<li>Data is stored in pits and bumps on a spiral track.</li>
+<li>DVDs use dual layering, which means that two individual recording layers are joined together. Reading and writing of the second layer is done by focusing another red laser at a fraction of a millimetre difference compared to the first layer. However, this can cause <strong>birefringence</strong>, which is when light is refracted into two separate beams, causing errors.</li>
+</ul>
+<h4 id="dvd-ram">DVD-RAM</h4>
+<ul>
+<li>Instead of a single, spiral track, they use a number of concentric tracks.</li>
+<li>This allows simultaneous read and write operations to take place.</li>
+<li>Numerous read and write operations and great longevity makes them ideal for archiving.</li>
+</ul>
+<h4 id="blu-ray-disks">Blu-ray Disks</h4>
+<ul>
+<li>A blue laser instead of a red laser is used, which has a smaller wavelength.</li>
+<li>This means that the ‘pits’ and ‘bumps’ can be much smaller. So, Blu-ray disks can store five times as much data as normal DVDs.</li>
+<li>Doesn’t suffer from birefringence because it uses only one layer.</li>
+<li>Comes with a secure encryption system which helps prevent piracy and copyright infringement.</li>
+</ul>
+<h4 id="usb-flash-memories">USB flash memories</h4>
+<ul>
+<li>Memory sticks use solid-state technology.</li>
+<li>They connect to the computer through the USB port, and are small, lightweight devices.</li>
+<li>Complex or expensive software uses memory sticks called dongles. This contains additional files that are needed to run the software. This prevents piracy.</li>
+<li>Digital cameras use XD (eXtreme Digital) or SD (Secure Digital) cards. Each memory card is made of NAND chips and does not contain moving parts.</li>
+<li>Data can be corrupted if the flash drive is removed before being made safe.</li>
+</ul>
+<h4 id="removable-hard-disk-drives">Removable hard disk drives</h4>
+<ul>
+<li>HDDs that can be connected to the computer using a USB port. They can be used as back-up devices.</li>
+</ul>
+
+    </div>
+  </div>
+</body>
+
+</html>
